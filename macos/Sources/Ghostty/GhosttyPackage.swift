@@ -360,6 +360,9 @@ extension Notification.Name {
     /// Ring the bell
     static let ghosttyBellDidRing = Notification.Name("com.mitchellh.ghostty.ghosttyBellDidRing")
 
+    /// A desktop notification was fired for a surface (OSC 9/99 or command completion)
+    static let ghosttyDesktopNotificationDidFire = Notification.Name("com.mitchellh.ghostty.desktopNotificationDidFire")
+
     /// Readonly mode changed
     static let ghosttyDidChangeReadonly = Notification.Name("com.mitchellh.ghostty.didChangeReadonly")
     static let ReadonlyKey = ghosttyDidChangeReadonly.rawValue + ".readonly"
