@@ -19,6 +19,7 @@
 # discussion by the author. Maintainers can denounce users by commenting
 # "!denounce" or "!denounce [username]" on a discussion.
 00-kat
+04cb
 aalhendi
 abdurrahmanski
 abudvytis
@@ -30,6 +31,7 @@ alexfeijoo44
 alexjuca
 amadeus
 andrejdaskalov
+anthonyzhoon
 atomk
 balazs-szucs
 bennettp123
@@ -93,6 +95,7 @@ laxystem
 liby
 linustalacko
 lonsagisawa
+mac0ne
 mahnokropotkinvich
 marijagjorgjieva
 markdorison
