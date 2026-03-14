@@ -233,6 +233,8 @@ final class GhosttyIPCServer {
             handleTabSetStatus(params: params, client: client)
         case "tab.clear-status":
             handleTabClearStatus(params: params, client: client)
+        case "tab.set-color":
+            handleTabSetColor(params: params, client: client)
         case "tab.list":
             handleTabList(client: client)
         case "tab.current":
@@ -322,6 +324,27 @@ final class GhosttyIPCServer {
 
         TabMetadataStore.shared.clearStatus(tabId: surface.id, key: key)
         sendOk(["status_cleared": true], to: client)
+    }
+
+    private func handleTabSetColor(params: [String: Any], client: ClientConnection) {
+        guard let colorName = params["color"] as? String else {
+            sendError("tab.set-color requires 'color' param (none, blue, purple, pink, red, orange, yellow, green, teal, graphite)", to: client)
+            return
+        }
+
+        guard let color = TerminalTabColor(ipcName: colorName) else {
+            sendError("unknown color: \(colorName). Valid: none, blue, purple, pink, red, orange, yellow, green, teal, graphite", to: client)
+            return
+        }
+
+        guard let controller = resolveController(params: params),
+              let window = controller.window as? TerminalWindow else {
+            sendError("tab not found", to: client)
+            return
+        }
+
+        window.tabColor = color
+        sendOk(["color_set": true, "color": colorName], to: client)
     }
 
     private func handleTabList(client: ClientConnection) {

@@ -38,6 +38,23 @@ enum TerminalTabColor: Int, CaseIterable, Codable {
         }
     }
 
+    /// Inicializar desde un nombre de texto (para IPC).
+    init?(ipcName: String) {
+        switch ipcName.lowercased() {
+        case "none": self = .none
+        case "blue": self = .blue
+        case "purple": self = .purple
+        case "pink": self = .pink
+        case "red": self = .red
+        case "orange": self = .orange
+        case "yellow": self = .yellow
+        case "green": self = .green
+        case "teal": self = .teal
+        case "graphite": self = .graphite
+        default: return nil
+        }
+    }
+
     var displayColor: NSColor? {
         switch self {
         case .none:
