@@ -203,12 +203,13 @@ private struct SidebarTabCard: View {
 
     /// The accent color for the left border strip.
     /// When dimming is enabled, inactive tabs use reduced opacity for a gentle dim.
+    /// When no color is set (.none), the strip is fully transparent.
     private var accentColor: Color {
         if let nsColor = tab.tabColor.displayColor {
             let base = Color(nsColor: nsColor)
             return (dimInactive && !tab.isSelected) ? base.opacity(0.55) : base
         }
-        return Color(nsColor: .separatorColor).opacity(tab.isSelected ? 0.3 : 0.15)
+        return .clear
     }
 
     /// The border color for the thin card border — always neutral gray.
